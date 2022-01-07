@@ -8,7 +8,6 @@ class Solution {
             for (int j = 0; j < 9; j++) {
                 if(board[i][j] =='.')
                     continue;
-                System.out.println(Character.getNumericValue(board[i][j]));
                 n = Character.getNumericValue(board[i][j]) - 1;
                 if(rows[i][n])
                     return false;
