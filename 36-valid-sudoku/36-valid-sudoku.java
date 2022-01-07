@@ -1,5 +1,5 @@
 class Solution {
-        public boolean boxes[][] = new boolean[9][9];
+    public boolean boxes[][] = new boolean[9][9];
     public boolean cols[][] = new boolean[9][9];
     public boolean rows[][] = new boolean[9][9];
     int n = 0;
@@ -8,7 +8,7 @@ class Solution {
             for (int j = 0; j < 9; j++) {
                 if(board[i][j] =='.')
                     continue;
-                n = Character.getNumericValue(board[i][j]) - 1;
+                n = board[i][j] -'0' - 1;
                 if(rows[i][n])
                     return false;
                 if(cols[j][n])
