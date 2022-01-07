@@ -1,3 +1,4 @@
+import java.math.*;
 class Solution {
     public int maxProfit(int[] prices) {
         int max = prices[prices.length-1];
