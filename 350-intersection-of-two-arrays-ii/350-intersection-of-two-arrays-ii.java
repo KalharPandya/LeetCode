@@ -13,10 +13,7 @@ class Solution {
                 ans[aindex++] = i;
             }
         }
-        int[] fans = new int[aindex];
-        for (int i = 0; i < aindex; i++) {
-            fans[i] = ans[i];
-        }
-        return fans;
+        
+        return Arrays.copyOfRange(ans,0,aindex);
     }
 }
