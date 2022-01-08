@@ -1,25 +1,45 @@
 class Solution {
     public boolean isValid(String s) {
-        char[] sc = s.toCharArray();
-        Deque<Character> dq = new ArrayDeque<Character>();
-        for(int i = 0; i < sc.length ; i ++){
-            if(sc[i] == '('){
-                dq.addFirst(')');
-            }
-            else if(sc[i] == '{'){
-                dq.addFirst('}');
-            }
-            else if(sc[i] == '['){
-                dq.addFirst(']');
-            }
-            else{
-                if(dq.isEmpty() || dq.pollFirst()!=sc[i])
-                    return false;
-            }
-            if(dq.size() > sc.length - i)
-                return false;
-        }
-        return dq.isEmpty();
-    }
+	        int len = s.length();
+	        if ((len % 2 != 0) || (len == 0)) {
+	        	return false;
+	        }
+	        else {
+	        	char stack[] = new char[len];
+	        	int i = -1;
+	        	int j = 0;
+	        	while(j < len) {
+                    if ((i == -1) && ((s.charAt(j) == ')') || (s.charAt(j) == '}') || (s.charAt(j) == ']'))){
+                        return false;
+                    }
+	        		if((s.charAt(j) == '(') || (s.charAt(j) == '{') || (s.charAt(j) == '[') ) {
+                        i++;
+	        			stack[i] = s.charAt(j);
+	        			
+	        		}
+	        		else if ((s.charAt(j) == ')') && (stack[i] == '(')) {
+	        			i = i-1;
+	        		}
+	        		else if ((s.charAt(j) == '}') && (stack[i] == '{')) {
+	        			i = i-1;
+	        		}
+	        		else if ((s.charAt(j) == ']') && (stack[i] == '[')) {
+	        			i = i-1;
+	        		}
+	        		else {
+                        i++;
+	        			stack[i] = s.charAt(j);
+	        			
+	        		}
+	        		j++;
+                   
+	        	}
+	        	if (i == -1) {
+	        		return true;
+	        	}
+	        	else
+	        		return false;
+	        }
+	    }
 }
     
