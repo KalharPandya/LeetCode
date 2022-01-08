@@ -10,52 +10,55 @@
  */
 class Solution {
     public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
-        
-        ListNode ans = new ListNode();
-        ListNode ansHead = ans;
+        ListNode ans;
+        ListNode ansHead;
         if(list1==null && list2==null){
             return null;
         }
-        
+        else if(list1==null){
+            ans = list2;
+            list2 = list2.next;
+        }
+        else if(list2==null){
+            ans=list1;
+            list1 = list1.next;
+        }
+        else if(list1.val< list2.val) {
+            ans = list1;
+            list1 = list1.next;
+        }
+        else {
+            ans = list2;
+            list2 = list2.next;
+        }
+        ansHead = ans;
         while (list1!=null && list2!=null){
             if(list1.val < list2.val){
-                ans.val=list1.val;
+                ans.next=list1;
                 list1=list1.next;
-                ListNode next = new ListNode();
-                ans.next = next;
-                ans = next;
-                if(list1==null)
-                    break;
             }
             else{
-                ans.val=list2.val;
+                ans.next=list2;
                 list2=list2.next;
-                ListNode next = new ListNode();
-                ans.next = next;
-                ans = next;
-                if(list2==null)
-                    break;
             }
-            
+            ans=ans.next;
 
         }
         while (list1!=null){
-            ans.val=list1.val;
+            ans.next=list1;
             list1=list1.next;
             if(list1==null)
                 break;
-            ListNode next = new ListNode();
-            ans.next = next;
-            ans = next;
+
+            ans = ans.next;
         }
         while (list2!=null){
-            ans.val=list2.val;
+            ans.next=list2;
             list2=list2.next;
             if(list2==null)
                 break;
-            ListNode next = new ListNode();
-            ans.next = next;
-            ans = next;
+
+            ans = ans.next;
         }
         return ansHead;
     }
