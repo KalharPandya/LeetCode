@@ -25,6 +25,7 @@ class Solution {
                 root = root.left;
             }
         }
+        System.gc();
         return root;
     }
 }
