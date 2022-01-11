@@ -14,26 +14,21 @@
  * }
  */
 class Solution {
-    boolean first = false;
-    int lastNode = Integer.MIN_VALUE;
+    boolean first = true;
+    boolean ans = true;
+    int lastNode;
+    public void helper(TreeNode t){
+        if(t == null)
+            return;
+        helper(t.left);
+        if(!first && t.val <= lastNode) ans =  false;
+        lastNode = t.val;
+        first = false;
+        helper(t.right);
+    }
     public boolean isValidBST(TreeNode root) {
-        Stack<TreeNode> stack = new Stack<>();
         
-        while (root!=null || !stack.isEmpty()){
-            while(root!=null){
-                stack.push(root);
-                root = root.left;
-            }
-            root = stack.pop();
-            
-            if(first && root.val<=lastNode){
-                return false;
-            }
-            first = true;
-            lastNode = root.val;
-            root = root.right;
-            
-        }
-        return true;
+        helper(root);
+        return ans;
     }
 }
