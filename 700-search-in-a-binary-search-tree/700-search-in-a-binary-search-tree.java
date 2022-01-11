@@ -16,19 +16,19 @@
 class Solution {
     int target = 0;
     TreeNode l;
-    TreeNode findIt(TreeNode t){
-        if(t==null) return null;
-        
-        if(t.val == target) return t;
-        
-        l = findIt(t.left);
-        if(l==null)    
-            return findIt(t.right);
-        return l;
-        
-    }
+    
     public TreeNode searchBST(TreeNode root, int val) {
-        target = val;
-        return findIt(root);
+        while (root!=null){
+            if(root.val == val) break;
+            
+            if(root.val < val){
+                root=root.right;
+
+            }else{
+                root = root.left;
+            }
+        }
+        System.gc();
+        return root;
     }
 }
