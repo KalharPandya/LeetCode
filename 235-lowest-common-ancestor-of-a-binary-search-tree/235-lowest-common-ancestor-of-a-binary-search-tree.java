@@ -9,28 +9,10 @@
  */
 
 class Solution {
-    TreeNode lastAncestor;
-    TreeNode p, q;
-    public void getOrder(TreeNode t){
-        if (t==null) return;
-        if(p.val<t.val && q.val<t.val) {
-            lastAncestor = t;
-            getOrder(t.left);
-        }
-        else if(p.val>t.val && q.val>t.val) {
-            lastAncestor = t;
-            getOrder(t.right);
-        }
-        else{
-            lastAncestor = t;
-            return;
-        }
-
-    }
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-        this.p = p;
-        this.q = q;
-        getOrder(root);
-        return lastAncestor;
+        if (root == null) return null ;
+        if (p.val < root.val && q.val < root.val) return lowestCommonAncestor(root.left , p , q) ;
+        if (p.val > root.val && q.val > root.val) return lowestCommonAncestor(root.right , p , q) ;
+        return root ;
     }
 }
