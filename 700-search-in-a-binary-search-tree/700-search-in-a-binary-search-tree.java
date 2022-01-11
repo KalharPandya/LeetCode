@@ -13,10 +13,7 @@
  *     }
  * }
  */
-class Solution {
-    int target = 0;
-    TreeNode l;
-    
+class Solution {    
     public TreeNode searchBST(TreeNode root, int val) {
         while (root!=null){
             if(root.val == val) break;
