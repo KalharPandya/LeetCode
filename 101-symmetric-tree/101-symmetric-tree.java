@@ -14,34 +14,14 @@
  * }
  */
 class Solution {
-    public List<Integer> left = new ArrayList<>();
-    public List<Integer> right = new ArrayList<>();
-    void leftOrder(TreeNode t){
-        if(t == null) {
-            left.add(null);
-            return;
-        }
-        leftOrder(t.left);
-        leftOrder(t.right);
-        left.add(t.val);
-    }
-    void rightOrder(TreeNode t){
-        if(t == null) {
-            right.add(null);
-            return;
-        }
-        rightOrder(t.right);
-        rightOrder(t.left);
-        right.add(t.val);
+    boolean helper(TreeNode left , TreeNode right){
+        if(left == null && right == null) return true;
+        if(left == null || right == null) return false;
+        if(left.val != right.val) return false;
+        return helper(left.left , right. right) && helper(left.right, right.left);
     }
     public boolean isSymmetric(TreeNode root) {
-        leftOrder(root.left);
-        rightOrder(root.right);
-
-        left.stream().forEach(integer -> System.out.print(integer + ", "));
-        System.out.println();
-        right.stream().forEach(integer -> System.out.print(integer + ", "));
-        return left.equals(right);
+        return helper(root.left, root.right);
     }
    
 }
