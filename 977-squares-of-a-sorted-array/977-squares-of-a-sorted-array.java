@@ -1,28 +1,31 @@
 class Solution {
     public int[] sortedSquares(int[] nums) {
         int pos = 0;
+        int neg = 0;
+        int cindex = 0;
         int ansIndex = 0;
-        Stack <Integer> stack = new Stack();
+        int ans[] = new int[nums.length];
         for(int i : nums){
             if(i>=0)
                 break;
-            stack.push(i);
-            pos++;
+            cindex++;
         }
-        while(!stack.isEmpty() && pos < nums.length){
-            if(stack.peek()*-1 < nums[pos]){
-                nums[ansIndex++] = (int)Math.pow(stack.pop(),2);
+        pos = cindex;
+        neg = cindex-1;
+        while(neg>=0 && pos < nums.length){
+            if(nums[neg]*-1 < nums[pos]){
+                ans[ansIndex++] = (int)Math.pow(nums[neg--],2);
             }
             else{
-                nums[ansIndex++] = (int)Math.pow(nums[pos++],2);
+                ans[ansIndex++] = (int)Math.pow(nums[pos++],2);
             }
         }
-        while(!stack.isEmpty()){
-            nums[ansIndex++] = (int)Math.pow(stack.pop(),2);
+        while(neg>=0){
+            ans[ansIndex++] = (int)Math.pow(nums[neg--],2);
         }
         while(pos < nums.length){
-            nums[ansIndex++] = (int)Math.pow(nums[pos++],2);
+            ans[ansIndex++] = (int)Math.pow(nums[pos++],2);
         }
-        return nums;   
+        return ans;   
     }
 }
