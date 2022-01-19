@@ -7,9 +7,9 @@ class Solution {
             if(nums[i] != 0)    nums[l++] = nums[i];
             
         }
-        for( i = l; i < length ; i ++){
+        for( i = l; i < length ; i ++)
             nums[i] = 0;
-         }
         
+    
     }
 }
