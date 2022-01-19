@@ -2,9 +2,10 @@ class Solution {
     
     public void rotate(int[] nums, int k) {
         int length = nums.length;
+        
+        k = k%length;
         if(k == 0 || length == 1)
             return;
-        k = k%length;
         int cptr = 0;
         int counter = 0;
         int temp;
