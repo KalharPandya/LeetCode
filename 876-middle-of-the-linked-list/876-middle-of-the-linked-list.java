@@ -10,7 +10,7 @@
  */
 class Solution {
     public ListNode middleNode(ListNode head) {
-        ListNode l,r;
+        ListNode r;
         r = head;
         while(r!=null){
             if(r.next!=null){
