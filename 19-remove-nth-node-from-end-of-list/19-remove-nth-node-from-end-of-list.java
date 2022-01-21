@@ -24,7 +24,6 @@ class Solution {
             l = l.next;
          
         }
-        System.out.println(l.val);
         if(l.next == null)
             return null;
         l.next = l.next.next;
