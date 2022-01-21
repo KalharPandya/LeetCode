@@ -11,15 +11,14 @@
 class Solution {
     public ListNode middleNode(ListNode head) {
         ListNode l,r;
-        l = head;
         r = head;
         while(r!=null){
             if(r.next!=null){
                 r = r.next.next;
-                l = l.next;
+                head = head.next;
             }
             else break;
         }
-        return l;
+        return head;
     }
 }
