@@ -6,7 +6,7 @@ class Solution {
         
         for(int i = 0 ; i < l ; i ++){
             index = Math.abs(nums[i]) -1;
-            nums[index]*=-1;
+            nums[index]=-nums[index];
             if(nums[index] >=0)
                 ans.add(Math.abs(nums[i]));
         }
